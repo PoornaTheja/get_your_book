@@ -1,0 +1,85 @@
+{% extends "home.html" %}
+
+{% block title %}
+    Title of book
+{% endblock %}
+
+{% block extra_head %}
+    <style>
+        .home_top {
+            background-color: rgb(148, 7, 85);
+            padding: 1%;
+            padding-top: 0.1%;
+            padding-bottom: 0.1%;
+            top: 0px;
+            width: 97%;
+            position: fixed;
+            height: 100px;
+        }
+
+        .book_cover {
+            text-align: center;
+        }
+
+        table {
+            /* background-color: coral; */
+            width: 97%;
+            margin: 2%;
+            padding: 1%;
+        }
+
+        th{
+            padding: 2%;
+            text-align: right;
+            /* background-color: blue; */
+            width: 40%;
+            vertical-align: top;
+        }
+
+        td {
+            padding: 20px;
+            text-align: left;
+        }
+
+    </style>
+{% endblock %}
+
+{% block heading %}
+    {{ book.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="book_cover">
+        <img src={{img_path}} alt="book cover" width=25%>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name of the book : </th>
+            <td>{{ book.name }}</td>
+        </tr>
+        <tr>
+            <th>Authors : </th>
+            <td>{{ book.authors }}</td>
+        </tr>
+        <tr>
+            <th>Genre : </th>
+            <td>{{ book.genre }}</td>
+        </tr>
+        <tr>
+            <th>Published on : </th>
+            <td>{{ book.publi_date }}</td>
+        </tr>
+        <tr>
+            <th>No of available copies : </th>
+            <td>{{ book.available }}</td>
+        </tr>
+        <tr>
+            <th>Description : </th>
+            <td>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolor distinctio illo eveniet. Doloribus minus dolore ducimus sit commodi dolor perferendis laborum error nobis rerum? Voluptatibus iusto esse, quas tempora corporis dolores iste corrupti nemo voluptatem, blanditiis unde atque optio asperiores voluptas impedit sint, reprehenderit tempore! Assumenda accusantium soluta delectus reprehenderit inventore culpa repudiandae, in, cumque architecto, explicabo eum vitae rem quod eos iusto! Cupiditate facere cumque qui quas, cum sequi aperiam reprehenderit velit repellat? Fuga qui iure alias sunt suscipit excepturi, eius incidunt odit velit! Perspiciatis excepturi alias placeat nulla aliquid debitis, quas reiciendis incidunt repellendus eveniet accusamus laudantium nam, maiores esse voluptatum omnis hic doloremque. Doloribus, adipisci blanditiis. Ipsa est repudiandae facilis. Est eveniet modi veniam eius accusantium voluptatum quasi alias aliquid. Similique voluptas voluptate velit quam blanditiis quaerat tempora adipisci dolores? Id, eaque, reprehenderit ullam sunt asperiores voluptate possimus corporis minima tempore ducimus aliquam cumque ipsam. Quas vel reiciendis, nam blanditiis ipsum ducimus dignissimos ex dolorem alias! Unde, ipsum expedita sit est corporis dignissimos magnam laboriosam praesentium quas sint at necessitatibus dolorum ratione optio odio illum laborum ipsa temporibus iusto aspernatur. Voluptates voluptatem molestias ipsa! Odit molestiae possimus, et aspernatur quas deleniti harum voluptas nostrum blanditiis natus quod, unde ex iusto maxime ab exercitationem quos ullam esse facilis est dignissimos tempora maiores corporis! Nostrum dolorem illum libero ratione, quos minima esse debitis deleniti sint illo veritatis ab sunt quidem. Distinctio consequatur eveniet blanditiis facere quidem necessitatibus fugit, quo cumque commodi nam. Expedita provident autem esse quaerat! Consectetur iusto, fuga animi ut sunt qui excepturi recusandae sit molestiae, praesentium quos. Illum, recusandae? Est, nulla architecto. Laboriosam, libero dignissimos alias deserunt repudiandae ut in, aut laudantium rem labore iusto ratione perspiciatis hic, exercitationem quae! Quidem doloremque quo placeat iure. Nostrum provident explicabo mollitia distinctio corporis aliquid consequatur ex rerum pariatur? Doloribus, dicta eos dignissimos sapiente voluptatum voluptates odit ex, earum harum consequatur qui tempore quae corrupti similique, aut rem deserunt assumenda! Et alias fuga nesciunt similique quae? Sint perspiciatis ducimus blanditiis voluptates, libero tenetur adipisci nobis enim fuga dolorem! Consequuntur esse commodi est harum, quidem illum quos distinctio rem doloremque provident aspernatur pariatur sequi. Facere voluptate, ratione minus sit consectetur, error voluptatum voluptates soluta voluptatem quod nesciunt. Modi doloribus fugiat deleniti ea eligendi doloremque numquam sunt nemo, recusandae incidunt unde ullam dolores! Natus voluptatem suscipit voluptates vel sapiente commodi corrupti quis explicabo accusamus nulla veniam distinctio doloremque rem porro reiciendis ab, nesciunt ipsa voluptas officiis dolores. Rem architecto facere minima, numquam similique laudantium quis nobis corrupti explicabo suscipit vitae odio at, pariatur eum. Quas rem ex, sint, reprehenderit quos vitae esse accusantium debitis aspernatur libero adipisci praesentium magni voluptatum? Ut saepe aliquid provident reprehenderit enim laboriosam maiores porro tempore, quis exercitationem veritatis quas sunt placeat optio quidem et neque? Necessitatibus sit impedit ad quidem, repudiandae a autem repellendus, assumenda quo consectetur ipsum quia, vitae quasi hic. Commodi laudantium labore nihil, odio eum recusandae blanditiis autem id aut modi. Architecto, eum vel! Odit beatae, cum assumenda quia dolor officia quod.
+            </td>
+        </tr>
+
+    </table>
+{% endblock %}

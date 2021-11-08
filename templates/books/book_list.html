@@ -1,0 +1,184 @@
+{% extends "home.html" %}
+
+{% block title %}
+    Books
+{% endblock %}
+
+{% block extra_head %}
+    <style>
+        .home_top {
+            background-color: rgb(156, 207, 14);
+            padding: 1%;
+            padding-top: 0.1%;
+            padding-bottom: 0.1%;
+            top: 0px;
+            width: 97%;
+            position: fixed;
+            height: 100px;
+        }
+
+        th{
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid black;
+            background-color: blue;
+        }
+
+        td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid black;
+        }
+
+        .table_data:hover {
+            background-color: yellow;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table {
+            background-color: rgb(19, 190, 105);
+            width: 70%;
+            float: left;
+        }
+
+        .search_bar {
+            /* background-color: coral; */
+            float: right;
+            width: 27%;
+        }
+
+        input {
+            width: 74%;
+            border: 1px solid black;
+            padding: 2%;
+            border-radius: 5px;
+            background: #f1f1f1;
+        }
+
+        .search_button {
+            border-radius: 5px;
+            padding: 2%;
+            background-color: rgb(161, 161, 216);
+            width: 20%;
+            cursor: pointer;
+            border: 1px solid grey;
+        }
+
+        .no_bk {
+            width: 70%;
+            background-color: crimson;
+            float: left;
+            text-align: center;
+        }
+
+        #book_name {
+            width: 27%;
+        }
+        #authors {
+            width: 20%;
+        }
+        #genre {
+            width: 13%;
+        }
+        #publi_date {
+            width: 16%;
+        }
+        #avail {
+            width: 17%;
+        }
+
+        #clear_search {
+            background-color: cyan;
+            margin: 3%;
+        }
+
+        .drop_downs {
+            background-color: darkgoldenrod;
+            float: right;
+            width: 25%;
+            margin-top: 4%;
+            padding: 1%;
+        }
+
+        select {
+            width: 100%;
+            margin-top: 2%;
+            margin-bottom: 5%;
+        }
+
+        .filter_but {
+            background-color: rgb(59, 248, 59);
+            margin-left: 35%;
+        }
+    </style>
+{% endblock %}
+
+{% block heading %}
+    Books
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th id="book_name">Book Name</th>
+            <th id="authors">Authors</th>
+            <th id="genre">Genre</th>
+            <th id="publi_date">Published on</th>
+            <th id="avail">Available copies</th>
+        </tr>
+
+        {% for b in ls %}
+            <tr class="table_data">
+                <td>
+                    <a href="/book/{{ b.book_id }}/">
+                        {{ b.name }}
+                    </a>
+                </td>
+                <td>{{ b.authors }}</td>
+                <td>{{ b.genre }}</td>
+                <td>{{ b.publi_date }}</td>
+                <td>{{ b.available }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <div class="search_bar">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Search by book name" name="search">
+            <button type="submit" class="search_button"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <a href="/book_list/" id="clear_search">Clear search</a>
+
+    {% if no_b %}
+        <p class="no_bk"><i>No book matched</i></p>
+    {% endif %}
+
+    <div class="drop_downs">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <label for="select_genre">Choose a genre :</label>
+            <select name="select_genre" id="genre_selc">
+                <option value="">-- select --</option>
+                {% for g in genre_list %}
+                    <option value="{{ g }}" name = "testing" >{{ g }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="select_author">Choose a author :</label>
+            <select name="select_author" id="auth_selc">
+                <option value="">-- select --</option>
+                {% for a in author_list %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="filter_but"> Filter books</button>
+        </form>
+    </div>
+{% endblock %}

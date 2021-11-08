@@ -1,0 +1,54 @@
+p {
+    color: rgb(206, 48, 8);
+    text-align: center;
+}
+
+.login {
+    /* background-color: rgb(119, 26, 180); */
+    width: 50%;
+    padding: 2%;
+}
+
+.social_accounts { 
+    /* background-color: brown; */
+    margin: 1%;
+    /* padding: 1%; */
+    text-align: center;
+}
+
+.login-or {
+    /* background-color: chartreuse; */
+    text-align: center;
+    font-size: large;
+    margin: 4%;
+}
+
+.login_form {
+    /* background-color: chocolate; */
+    padding: 3%;
+    padding-top: 1%;
+    margin: 1%;
+}
+
+.login_table {
+    /* background-color: aqua; */
+    text-align: center;
+    padding: 1%;
+}
+
+.forgot_pass {
+    /* background-color: rgb(215, 220, 230); */
+    position: relative;
+    left: 5%;
+}
+
+.no_account {
+    /* background-color: rgb(215, 220, 230); */
+    position: relative;
+    left: 35%;
+}
+
+.login_buttons {
+    /* background-color: black; */
+    margin: 2%;
+}

@@ -1,0 +1,25 @@
+.home_top {
+    background-color: blue;
+    padding: 1%;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+    top: 0px;
+    width: 97%;
+    position: fixed;
+    height: 100px;
+}
+
+.home_body {
+    width: 97%;
+    margin: 1%;
+}
+
+.empty {
+    background-color: rgb(255,255,255);
+    padding: 1%;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+    top: 0px;
+    width: 97%;
+    height: 100px;
+}
