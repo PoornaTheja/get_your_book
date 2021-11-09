@@ -5,7 +5,7 @@ from books.models import book
 # Create your models here.
 class comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
-    book = models.OneToOneField(book, on_delete=models.CASCADE)
+    book = models.ForeignKey(book, on_delete=models.CASCADE)
     user = models.ForeignKey(user, on_delete=models.CASCADE)
     comment = models.TextField(blank=True, null=True)
 
