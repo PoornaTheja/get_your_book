@@ -43,7 +43,7 @@
             width: 70%;
             padding-left:2%;
             padding-right: 2%;
-            /* float: left; */
+            float: left;
         }
 
         .book_name {
@@ -60,6 +60,23 @@
             /* background-color: crimson; */
             width: 70%;
             margin-top: 3%;
+            float: left;
+        }
+
+        .no_bk {
+            width: 64%;
+            background-color: crimson;
+            float: left;
+            text-align: center;
+            margin-left: 3%;
+        }
+
+        .pi_chart {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(110, 34, 34);
+            border-radius: 50%;
+            float: right;
         }
 
     </style>
@@ -74,6 +91,7 @@
     <div class="using">
         <h2>Currently using books</h2>
     </div>
+    <div>
         <table class="using_bks">
             <tr>
                 <th class="book_name">Name of the book</th>
@@ -91,11 +109,17 @@
                 </tr>
             {% endfor %}
         </table>
-    <!-- </div> -->
+    </div>
+
+    {% if no_use %}
+        <p class="no_bk"><i>No books here :(</i></p>
+    {% endif %}
+
 
     <div class="return">
         <h2>Returned books</h2>
     </div>
+    <div>
         <table class="returned_bks">
             <tr>
                 <th class="book_name">Name of the book</th>
@@ -113,6 +137,13 @@
                 </tr>
             {% endfor %}
         </table>
-    <!-- </div> -->
+    </div>
+
+    {% if no_ret %}
+        <p class="no_bk"><i>No books here :(</i></p>
+    {% endif %}
+
+    <!-- <div class="pi_chart">
+    </div> -->
 
 {% endblock %}

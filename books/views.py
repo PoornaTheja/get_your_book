@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import book
-from .forms import search_form, filter_form
+from comments.models import comment
+from .forms import search_form
 from collections import deque
 
 # Create your views here.
@@ -26,14 +27,6 @@ def book_list_view(request):
             authors_list.append(s)
 
 
-    # filt_form = filter_form(request.POST or None)
-    # print("*******************")
-    # print(request.POST.get("select_genre") or request.POST.get("select_author"))
-    # if filt_form.is_valid():
-    #     gen = filt_form.cleaned_data.get("select_genre")
-    #     aut = filt_form.cleaned_data.get("select_author")
-    #     print("-------------------")
-    #     print(gen, aut)
 
     if request.POST.get("select_genre") != None:
         new_ls = deque([])
@@ -62,6 +55,8 @@ def book_list_view(request):
                 new_ls.append(b)
 
         ls = new_ls
+
+    ls = ls.order_by("n_read")
     
     if len(ls)==0:
         no_b = True
@@ -72,7 +67,10 @@ def book_list_view(request):
     {"ls":ls, "no_b":no_b, "genre_list":genre_list, "author_list":authors_list})
 
 def book_view(request, pk):
-    bk = book.objects.filter(book_id = pk).first()
-    img_path = "/media/" + str(bk.cover)[2:-1] + "/"
 
-    return render(request, "books/book.html", {"book":bk, "img_path":img_path})
+    bk = book.objects.filter(book_id = pk).first()  
+    cs = comment.objects.filter(book = bk)
+    
+    img_path = "/media/" + str(bk.cover) + "/"
+
+    return render(request, "books/book.html", {"book":bk, "img_path":img_path, "cs":cs})

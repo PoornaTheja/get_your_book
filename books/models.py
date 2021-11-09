@@ -10,6 +10,7 @@ class book(models.Model):
     n_copies = models.IntegerField(blank=True, null=True)
     available = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    n_read = models.IntegerField(blank=True, null=True)
     cover = models.ImageField(upload_to ='books/', blank =True, null=True)
 
     class Meta:

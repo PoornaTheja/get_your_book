@@ -21,7 +21,7 @@
             text-align: center;
         }
 
-        table {
+        .bk_table {
             background-color: coral;
             width: 97%;
             margin: 2%;
@@ -37,7 +37,7 @@
         }
 
         td {
-            padding: 20px;
+            padding: 2%;
             text-align: left;
         }
 
@@ -64,8 +64,30 @@
 
         .cmnt_cell {
             /* background-color: rgb(22, 13, 148); */
-            width: 93%;
+            width: 95%;
             margin: 2%;
+            /* padding: 1%; */
+        }
+
+        .cmt_name {
+            background-color: rgb(255, 255, 255);
+            width: 20%;
+            text-align: left;
+            vertical-align: top;
+            padding: 0px;
+        }
+
+        .cmt_text {
+            /* background-color: rgb(216, 172, 85); */
+            /* width: 80%; */
+            padding: 0px;
+        }
+
+        .cmt_table {
+            /* background-color: rgb(67, 22, 173); */
+            width: 96%;
+            margin: 0px;
+            margin-left: 2%;
             padding: 1%;
         }
 
@@ -81,7 +103,7 @@
         <img src={{img_path}} alt="book cover" width=25%>
     </div>
 
-    <table>
+    <table class="bk_table">
         <tr>
             <th>Name of the book : </th>
             <td>{{ book.name }}</td>
@@ -117,7 +139,18 @@
 
     <div class="cmnts">
         <h2>Comments : </h2>
-        <div class="cmnt_cell">
+
+        {% for c in cs %}
+            <table class="cmt_table">
+                <tr>
+                    <th class="cmt_name">{{ c.user.name }}</th>
+                    <td class="cmt_text">{{ c.comment }}</td>
+                </tr>
+            </table>
+            <hr>
+        {% endfor %}
+
+        <!-- <div class="cmnt_cell">
             <h3>{{ request.user }}</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet libero ipsum laudantium ea, excepturi, sunt repudiandae impedit eligendi nemo perferendis dolore voluptatum! At harum deleniti alias beatae reiciendis animi totam cumque eligendi nostrum, excepturi illo dolorem eveniet ullam consequatur maiores sed molestias. Neque dolores reiciendis sequi hic nobis aliquid nesciunt perferendis, deserunt repellat quisquam laboriosam excepturi totam laborum cum fugiat dignissimos molestias facilis. Optio ipsam laboriosam officiis provident, totam ipsum autem in accusamus maxime cumque esse similique delectus nemo! Hic laudantium soluta laboriosam ducimus dolorem asperiores repellat nihil magnam, doloremque deserunt ipsa nam voluptatibus earum totam eum ipsum debitis?</p>
         </div>
@@ -125,6 +158,6 @@
         <div class="cmnt_cell">
             <h3>{{ request.user }}</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet libero ipsum laudantium ea, excepturi, sunt repudiandae impedit eligendi nemo perferendis dolore voluptatum! At harum deleniti alias beatae reiciendis animi totam cumque eligendi nostrum, excepturi illo dolorem eveniet ullam consequatur maiores sed molestias. Neque dolores reiciendis sequi hic nobis aliquid nesciunt perferendis, deserunt repellat quisquam laboriosam excepturi totam laborum cum fugiat dignissimos molestias facilis. Optio ipsam laboriosam officiis provident, totam ipsum autem in accusamus maxime cumque esse similique delectus nemo! Hic laudantium soluta laboriosam ducimus dolorem asperiores repellat nihil magnam, doloremque deserunt ipsa nam voluptatibus earum totam eum ipsum debitis?</p>
-        </div>
+        </div> -->
     </div>
 {% endblock %}
