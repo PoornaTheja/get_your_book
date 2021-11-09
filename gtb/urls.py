@@ -16,17 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+
 from books.views import book_list_view, book_view
+from profiles.views import order_view
+
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 
-    path("profile/", TemplateView.as_view(template_name = "profiles/profile.html"), name="profile"),
-    path("book/<int:pk>/", book_view),
+    path("profile/", order_view),
+    path("book/<int:pk>/", book_view), 
     path("book_list/", book_list_view),
 ]
 

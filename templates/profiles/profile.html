@@ -16,9 +16,103 @@
             position: fixed;
             height: 100px;
         }
+
+        th{
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid black;
+            background-color: rgb(78, 161, 30);
+        }
+
+        td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid black;
+        }
+
+        .table_data:hover {
+            background-color: yellow;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table {
+            /* background-color: rgb(43, 246, 141); */
+            width: 70%;
+            padding-left:2%;
+            padding-right: 2%;
+            /* float: left; */
+        }
+
+        .book_name {
+            width: 65%;
+        }
+
+        .using {
+            /* background-color: burlywood; */
+            width: 70%;
+            /* padding: 50px; */
+        }
+
+        .return {
+            /* background-color: crimson; */
+            width: 70%;
+            margin-top: 3%;
+        }
+
     </style>
 {% endblock %}
 
 {% block heading %}
     {{ request.user }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="using">
+        <h2>Currently using books</h2>
+    </div>
+        <table class="using_bks">
+            <tr>
+                <th class="book_name">Name of the book</th>
+                <th id="place_date">Placed on</th>
+            </tr>
+
+            {% for b in qs2 %}
+                <tr class="table_data">
+                    <td>
+                        <a href="/book/{{ b.book.book_id }}/">
+                            {{ b.book.name }}
+                        </a>
+                    </td>
+                    <td>{{ b.taken }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    <!-- </div> -->
+
+    <div class="return">
+        <h2>Returned books</h2>
+    </div>
+        <table class="returned_bks">
+            <tr>
+                <th class="book_name">Name of the book</th>
+                <th id="return_date">Returned on</th>
+            </tr>
+
+            {% for b in qs3 %}
+                <tr class="table_data">
+                    <td>
+                        <a href="/book/{{ b.book.book_id }}/">
+                            {{ b.book.name }}
+                        </a>
+                    </td>
+                    <td>{{ b.taken }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    <!-- </div> -->
+
 {% endblock %}

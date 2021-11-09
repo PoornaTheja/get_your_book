@@ -11,4 +11,4 @@ class comment(models.Model):
     class Meta:
         managed = False
         db_table = 'comments'
-        unique_together = (('book', 'user'),)
+        unique_together = (('book', 'user'),) 

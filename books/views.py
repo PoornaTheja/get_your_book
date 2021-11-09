@@ -46,7 +46,7 @@ def book_list_view(request):
         new_ls = deque([])
         for b in ls:
             if request.POST.get("select_author") in b.authors:
-                new_ls.append(b)
+                new_ls.append(b) 
         ls = new_ls
 
 

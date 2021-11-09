@@ -13,5 +13,5 @@ class book(models.Model):
     cover = models.ImageField(upload_to ='books/', blank =True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'books'
+        managed = False 
+        db_table = 'books' 
