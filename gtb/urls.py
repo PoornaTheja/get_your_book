@@ -31,6 +31,8 @@ urlpatterns = [
     path("profile/", order_view),
     path("book/<int:pk>/", book_view), 
     path("book_list/", book_list_view),
+
+    path("home/", TemplateView.as_view(template_name = "base.html"), name="home")
 ]
 
 urlpatterns += staticfiles_urlpatterns()

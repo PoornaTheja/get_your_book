@@ -1,138 +1,88 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Title of book
 {% endblock %}
 
 {% block extra_head %}
-    <style>
-        .home_top {
-            background-color: rgb(148, 7, 85);
-            padding: 1%;
-            padding-top: 0.1%;
-            padding-bottom: 0.1%;
-            top: 0px;
-            width: 97%;
-            position: fixed;
-            height: 100px;
-        }
-
-        .book_cover {
-            text-align: center;
-        }
-
-        .bk_table {
-            background-color: coral;
-            width: 97%;
-            margin: 2%;
-            padding: 1%;
-        }
-
-        th{
-            padding: 2%;
-            text-align: right;
-            background-color: blue;
-            width: 40%;
-            vertical-align: top;
-        }
-
-        td {
-            padding: 2%;
-            text-align: left;
-        }
-
-        .desc {
-            /* background-color: brown; */
-            width: 95%;
-            margin: 2%;
-            padding: 1%;
-        }
-
-        #desc_cnt {
-            /* background-color: rgb(22, 13, 148); */
-            width: 93%;
-            margin: 2%;
-            padding: 1%;
-        }
-
-        .cmnts {
-            /* background-color: rgb(42, 165, 93); */
-            width: 95%;
-            margin: 2%;
-            padding: 1%;
-        }
-
-        .cmnt_cell {
-            /* background-color: rgb(22, 13, 148); */
-            width: 95%;
-            margin: 2%;
-            /* padding: 1%; */
-        }
-
-        .cmt_name {
-            background-color: rgb(255, 255, 255);
-            width: 20%;
-            text-align: left;
-            vertical-align: top;
-            padding: 0px;
-        }
-
-        .cmt_text {
-            /* background-color: rgb(216, 172, 85); */
-            /* width: 80%; */
-            padding: 0px;
-        }
-
-        .cmt_table {
-            /* background-color: rgb(67, 22, 173); */
-            width: 96%;
-            margin: 0px;
-            margin-left: 2%;
-            padding: 1%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="{% static 'book.css' %}">
+    <!-- <style>
+        .book_info {
+            width: 70%;
+            float: right;
+            background-color: rgb(138, 173, 23);
+        }   
+    </style> -->
 {% endblock %}
 
 {% block heading %}
     {{ book.name }}
 {% endblock %}
 
-{% block content %}
+{% block body_content %}
+
     <div class="book_cover">
-        <img src={{img_path}} alt="book cover" width=25%>
+        <img src={{img_path}} alt="book cover" width=100%>
     </div>
 
-    <table class="bk_table">
-        <tr>
-            <th>Name of the book : </th>
-            <td>{{ book.name }}</td>
-        </tr>
-        <tr>
-            <th>Authors : </th>
-            <td>{{ book.authors }}</td>
-        </tr>
-        <tr>
-            <th>Genre : </th>
-            <td>{{ book.genre }}</td>
-        </tr>
-        <tr>
-            <th>Published on : </th>
-            <td>{{ book.publi_date }}</td>
-        </tr>
-        <!-- <tr>
-            <th>No of available copies : </th>
-            <td>{{ book.available }}</td>
-        </tr> -->
-        <!-- <tr>
-            <th>Description : </th>
-            <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolor distinctio illo eveniet. Doloribus minus dolore ducimus sit commodi dolor perferendis laborum error nobis rerum? Voluptatibus iusto esse, quas tempora corporis dolores iste corrupti nemo voluptatem, blanditiis unde atque optio asperiores voluptas impedit sint, reprehenderit tempore! Assumenda accusantium soluta delectus reprehenderit inventore culpa repudiandae, in, cumque architecto, explicabo eum vitae rem quod eos iusto! Cupiditate facere cumque qui quas, cum sequi aperiam reprehenderit velit repellat? Fuga qui iure alias sunt suscipit excepturi, eius incidunt odit velit! Perspiciatis excepturi alias placeat nulla aliquid debitis, quas reiciendis incidunt repellendus eveniet accusamus laudantium nam, maiores esse voluptatum omnis hic doloremque. Doloribus, adipisci blanditiis. Ipsa est repudiandae facilis. Est eveniet modi veniam eius accusantium voluptatum quasi alias aliquid. Similique voluptas voluptate velit quam blanditiis quaerat tempora adipisci dolores? Id, eaque, reprehenderit ullam sunt asperiores voluptate possimus corporis minima tempore ducimus aliquam cumque ipsam. Quas vel reiciendis, nam blanditiis ipsum ducimus dignissimos ex dolorem alias! Unde, ipsum expedita sit est corporis dignissimos magnam laboriosam praesentium quas sint at necessitatibus dolorum ratione optio odio illum laborum ipsa temporibus iusto aspernatur. Voluptates voluptatem molestias ipsa! Odit molestiae possimus, et aspernatur quas deleniti harum voluptas nostrum blanditiis natus quod, unde ex iusto maxime ab exercitationem quos ullam esse facilis est dignissimos tempora maiores corporis! Nostrum dolorem illum libero ratione, quos minima esse debitis deleniti sint illo veritatis ab sunt quidem. Distinctio consequatur eveniet blanditiis facere quidem necessitatibus fugit, quo cumque commodi nam. Expedita provident autem esse quaerat! Consectetur iusto, fuga animi ut sunt qui excepturi recusandae sit molestiae, praesentium quos. Illum, recusandae? Est, nulla architecto. Laboriosam, libero dignissimos alias deserunt repudiandae ut in, aut laudantium rem labore iusto ratione perspiciatis hic, exercitationem quae! Quidem doloremque quo placeat iure. Nostrum provident explicabo mollitia distinctio corporis aliquid consequatur ex rerum pariatur? Doloribus, dicta eos dignissimos sapiente voluptatum voluptates odit ex, earum harum consequatur qui tempore quae corrupti similique, aut rem deserunt assumenda! Et alias fuga nesciunt similique quae? Sint perspiciatis ducimus blanditiis voluptates, libero tenetur adipisci nobis enim fuga dolorem! Consequuntur esse commodi est harum, quidem illum quos distinctio rem doloremque provident aspernatur pariatur sequi. Facere voluptate, ratione minus sit consectetur, error voluptatum voluptates soluta voluptatem quod nesciunt. Modi doloribus fugiat deleniti ea eligendi doloremque numquam sunt nemo, recusandae incidunt unde ullam dolores! Natus voluptatem suscipit voluptates vel sapiente commodi corrupti quis explicabo accusamus nulla veniam distinctio doloremque rem porro reiciendis ab, nesciunt ipsa voluptas officiis dolores. Rem architecto facere minima, numquam similique laudantium quis nobis corrupti explicabo suscipit vitae odio at, pariatur eum. Quas rem ex, sint, reprehenderit quos vitae esse accusantium debitis aspernatur libero adipisci praesentium magni voluptatum? Ut saepe aliquid provident reprehenderit enim laboriosam maiores porro tempore, quis exercitationem veritatis quas sunt placeat optio quidem et neque? Necessitatibus sit impedit ad quidem, repudiandae a autem repellendus, assumenda quo consectetur ipsum quia, vitae quasi hic. Commodi laudantium labore nihil, odio eum recusandae blanditiis autem id aut modi. Architecto, eum vel! Odit beatae, cum assumenda quia dolor officia quod.
-            </td>
-        </tr> -->
-    </table>
+    <div class="book_info">
 
-    <div class="desc">
+        <h1 class="book_head">{{book.name}}</h1>
+
+        <table class="bk_table">
+            <tr>
+                <th>Authors : </th>
+                <td>{{ book.authors }}</td>
+            </tr>
+            <tr>
+                <th>Genre : </th>
+                <td>{{ book.genre }}</td>
+            </tr>
+            <tr>
+                <th>Published on : </th>
+                <td>{{ book.publi_date }}</td>
+            </tr>
+            <tr>
+                <th>Read by : </th>
+                <td>{{ book.n_read }} users</td>
+            </tr>
+        </table>
+
+        <div class="extra">
+            <a href="#description">
+                <p id="desc_b">Description</p>
+            </a>
+
+            <a href="#comments">
+                <p id="rev_b">Reviews</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="book_ord">
+        {% if book.available != 0 %}
+            {% if stat == '' %}
+                <form action="." method="post">
+                    <button class="button" type="submit">RENT</button>
+                </form>
+                <h3 class="avail_num">{{book.available}} available</h3>
+            {% else %}
+                <p id="status">{{stat}}</p>
+            {% endif %}
+
+        {% else %}
+            <h3 class="no_bks" style="color: red;">currently unavalable</h3>
+            <!-- <p>will be available soon</p> -->
+        {% endif %}
+
+        <a href="/book/{{pk}}">
+            <p id="ref_b">Refresh</p>
+        </a>
+
+    </div>
+
+    <!-- <div class="desc">
         <h2>Description : </h2>
         <p id="desc_cnt"> {{ book.description }} </p>
     </div>
@@ -150,14 +100,58 @@
             <hr>
         {% endfor %}
 
-        <!-- <div class="cmnt_cell">
-            <h3>{{ request.user }}</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet libero ipsum laudantium ea, excepturi, sunt repudiandae impedit eligendi nemo perferendis dolore voluptatum! At harum deleniti alias beatae reiciendis animi totam cumque eligendi nostrum, excepturi illo dolorem eveniet ullam consequatur maiores sed molestias. Neque dolores reiciendis sequi hic nobis aliquid nesciunt perferendis, deserunt repellat quisquam laboriosam excepturi totam laborum cum fugiat dignissimos molestias facilis. Optio ipsam laboriosam officiis provident, totam ipsum autem in accusamus maxime cumque esse similique delectus nemo! Hic laudantium soluta laboriosam ducimus dolorem asperiores repellat nihil magnam, doloremque deserunt ipsa nam voluptatibus earum totam eum ipsum debitis?</p>
-        </div>
+    </div> -->
 
-        <div class="cmnt_cell">
-            <h3>{{ request.user }}</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet libero ipsum laudantium ea, excepturi, sunt repudiandae impedit eligendi nemo perferendis dolore voluptatum! At harum deleniti alias beatae reiciendis animi totam cumque eligendi nostrum, excepturi illo dolorem eveniet ullam consequatur maiores sed molestias. Neque dolores reiciendis sequi hic nobis aliquid nesciunt perferendis, deserunt repellat quisquam laboriosam excepturi totam laborum cum fugiat dignissimos molestias facilis. Optio ipsam laboriosam officiis provident, totam ipsum autem in accusamus maxime cumque esse similique delectus nemo! Hic laudantium soluta laboriosam ducimus dolorem asperiores repellat nihil magnam, doloremque deserunt ipsa nam voluptatibus earum totam eum ipsum debitis?</p>
+    <!-- <div class= "book"> -->
+
+        <!-- <div class= "image">
+            <img src="{{book.cover.url}}">
         </div> -->
+
+        <!-- <div class= "detailes"> -->
+
+           <!-- <h1>{{ book.name }}</h1>
+           <h3><b>Author :</b>{{book.authors}}</h3>
+           <h3><b>Published on :</b>{{book.publi_date}}</h3>
+           <h3><b>Genre :</b> {{book.genre}}</h3> -->
+
+           <!-- {% if book.n_read != 0 %}
+           <h4><b>Read by:</b> {{ book.n_read }} users</h4>
+           {% endif %} -->
+
+           <!-- {% if book.availabel != 0 %}
+           <h3 style="color: limegreen;">{{book.available}} available</h3>
+           <h5>Rent now to get 10 days rent duration</h5>
+           <a href="#"> 
+            <button class="button">RENT</button>
+           </a>
+           {% else %}
+           <h3 style="color: orange;">currently unavalable</h3>
+           <h5>will be available soon</h5>
+           {% endif %} -->
+
+        <!-- </div> -->
+    <!-- </div> -->
+
+    <div id="description">
+        <h2>Description</h2>
+        <p>{{book.description}}</p>
     </div>
+
+    <div id="comments">
+        <h2 style="text-align: center;">Reviews</h2>
+        {% if count == 0 %}
+        <h3 style="text-align: center;">No Reviews Yet</h3>
+        {% else %}
+        <div class="row">
+            {% for cmt in cs %}
+            <div class="card">
+                <b>{{cmt.user.username}}</b>
+                <p>{{cmt.comment}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
 {% endblock %}

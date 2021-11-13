@@ -3,10 +3,12 @@ from .models import book
 from comments.models import comment
 from .forms import search_form
 from collections import deque
+from profiles.models import user
+from orders.models import order
 
 # Create your views here.
 def book_list_view(request):
-    ls = book.objects.all()
+    ls = book.objects.all().order_by("-n_read")
 
     genre_list = deque([])
     for s in list(set((ls.values_list("genre", flat=True)))):
@@ -51,12 +53,10 @@ def book_list_view(request):
 
         new_ls = deque([])
         for b in ls:
-            if data.lower() in b.name.lower():
+            if (data.lower() in b.name.lower()) or (data.lower() in b.genre.lower()) or (data.lower() in b.authors.lower()):
                 new_ls.append(b)
 
         ls = new_ls
-
-    ls = ls.order_by("n_read")
     
     if len(ls)==0:
         no_b = True
@@ -70,7 +70,33 @@ def book_view(request, pk):
 
     bk = book.objects.filter(book_id = pk).first()  
     cs = comment.objects.filter(book = bk)
-    
-    img_path = "/media/" + str(bk.cover) + "/"
 
-    return render(request, "books/book.html", {"book":bk, "img_path":img_path, "cs":cs})
+    
+    if str(bk.cover) == "":
+        img_path = "/media/books/noImg.jpg"
+    else:
+        img_path = "/media/" + str(bk.cover)
+
+    # print("@@@@@@@@@@@@@@@@@@@@")
+    # print(request.method)
+
+    u = user.objects.all().filter(username = request.user).first()
+    u_id = u.user_id
+    b_id = bk.book_id
+
+    # print(u_id, b_id)
+
+    stat = ''
+
+    if request.method == "POST":
+        o = order.objects.create(book = bk, user = u)
+        stat = o.r_status
+
+    qs = order.objects.all().filter(book = bk).filter(user = u).exclude(r_status = "returned")
+    if len(qs):
+        qs = qs.first()
+        stat = qs.r_status
+
+
+    return render(request, "books/book.html", 
+    {"book":bk, "img_path":img_path, "cs":cs, "stat":stat, "pk":pk})
