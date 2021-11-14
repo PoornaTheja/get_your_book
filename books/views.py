@@ -66,6 +66,11 @@ def book_list_view(request):
     return render(request, "books/book_list.html", 
     {"ls":ls, "no_b":no_b, "genre_list":genre_list, "author_list":authors_list})
 
+def book_block_veiw(request, *args, **kwrgs):
+    books= book.objects.all().order_by('-n_read')
+    context={'books': books}
+    return render(request, 'books/book_cards.html', context)
+
 def book_view(request, pk):
 
     bk = book.objects.filter(book_id = pk).first()  
@@ -88,6 +93,8 @@ def book_view(request, pk):
 
     stat = ''
 
+    
+
     if request.method == "POST":
         o = order.objects.create(book = bk, user = u)
         stat = o.r_status
@@ -100,3 +107,4 @@ def book_view(request, pk):
 
     return render(request, "books/book.html", 
     {"book":bk, "img_path":img_path, "cs":cs, "stat":stat, "pk":pk})
+

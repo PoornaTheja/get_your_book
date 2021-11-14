@@ -85,34 +85,30 @@ after insert on orders for each row
 begin 
   declare aval int;
   select available into aval from books where book_id = new.book_id;
- if  aval > 0 then
-  update user
-    set user.noof_current_books=user.noof_current_books+1
-     where user.user_id = new.user_id;
-  update books 
-   set books.available = books.available -1
-   where books.book_id = new.book_id;
-   end if;
+  if  aval > 0 then
+   update user
+    set user.no_of_current_books=user.no_of_current_books+1
+    where user.user_id = new.user_id;
+   update books 
+    set books.available = books.available -1
+    where books.book_id = new.book_id;
+  end if;
 end $$
 
-delimiter ;
-
--- to update available books and user books when user returned 
-delimiter $$
 
 create trigger book_return
 after update on orders for each row 
 begin 
-declare cb int;
-select noof_current_books into cb from user where user_id = new.user_id;
-if cb > 0  and new.r_status = 'returned' then 
- update user
- set user.noof_current_books = user.noof_current_books -1, user.n_read = user.n_read+1
- where user.user_id = new.user_id;
- update books 
-   set books.available = books.available +1
+ if old.r_status = 'using' and new.r_status = 'returned' then 
+  update user
+   set user.no_of_current_books = user.no_of_current_books-1,
+   user.n_read = user.n_read+1
+   where user.user_id = new.user_id;
+  update books 
+   set books.available = books.available+1,
+   books.n_read = books.n_read + 1
    where books.book_id = new.book_id;
-   end if;
+ end if;
 end $$
 
 delimiter ;

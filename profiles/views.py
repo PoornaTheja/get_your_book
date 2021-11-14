@@ -53,4 +53,7 @@ def create_profile(sender, instance, created, **kwargs):
         # except:
         #     print("^^^^^^")
 
+        # if instance.email == '':
+        #     email = "No email linked with this account"
+
         user.objects.create(username = instance.username, email = instance.email, pswd = instance.password)

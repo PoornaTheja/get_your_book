@@ -168,8 +168,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/home/"
-LOGOUT_REDIRECT_URL = "/accounts/login/"
-ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login"
+LOGOUT_REDIRECT_URL = "/home/"
+ACCOUNT_LOGOUT_REDIRECT_URL ="/home/"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

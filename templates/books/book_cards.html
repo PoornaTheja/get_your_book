@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+    <!-- <link rel="stylesheet" href="{% static 'blocks.css' %}"> -->
+    <style>
+        .container-fluid{
+            display: flex;
+        }
+
+        .card{
+            width: 20%;
+            display: inline-block;
+            box-shadow: 2px 2px 20px black;
+            border-radius: 5px; 
+            margin: 2%;
+            text-align: center;
+            transition: all .3s ease-in-out;
+        }
+
+        .image img{
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .card:hover {
+            transform: scale(1.05); 
+        } 
+
+        .home_body {
+            width: 97%;
+            margin: 1%;
+        }
+    </style>
+{% endblock %}
+
+{% block body_content %}
+    <div class="container-fluid">
+        {% for book in books %}
+            <div class = "card">
+                <a href="/book/{{ book.book_id }}">
+                    <div class = "image">
+                        <img src="{{book.cover.url}}"> 
+                    </div>
+                    <h4>{{ book.name }}</h4>
+                </a>
+            </div>
+        {% endfor %}
+        <!-- <h1>{{ request.get_full_path }}</h1> -->
+        <!-- <h1>{{ request.path }}</h1> -->
+    </div>
+{% endblock %}

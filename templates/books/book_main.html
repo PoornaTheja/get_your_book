@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+    <style>
+        .block_v {
+            background-color: rgb(233, 230, 230);
+            width: 20%;
+            /* height: 300px; */
+            text-align: center;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            border-radius: 10px;
+            box-shadow: 3px 3px 20px black;
+            transition: all .3s ease-in-out;
+            margin-top: 5%;
+            margin-left: 40%;
+            color: black;
+            
+        }
+        .block_v:hover {
+            box-shadow: 10px 10px 20px black; 
+            background-color: rgb(223, 220, 220);
+        }
+
+        .list_v {
+            background-color: rgb(233, 230, 230);
+            width: 20%;
+            /* padding: 5%; */
+            /* height: 300px; */
+            text-align: center;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            border-radius: 10px;
+            box-shadow: 3px 3px 20px black;
+            transition: all .3s ease-in-out;
+            margin-top: 5%;
+            margin-left: 40%;
+            color: black;
+        }
+        .list_v:hover {
+            box-shadow: 10px 10px 20px black; 
+            background-color: rgb(223, 220, 220);
+        }
+
+    </style>
+{% endblock %} 
+
+{% block body_content %}
+
+    <a href="/book_block/">
+        <div class="block_v">
+            <h1>Block View</h1>
+        </div>
+    </a>
+
+    <a href="/book_list/">
+        <div class="list_v">
+            <h1>List View</h1>
+        </div>
+    </a>
+
+{% endblock %}

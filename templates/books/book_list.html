@@ -21,27 +21,33 @@
             padding: 20px;
             text-align: left;
             border-bottom: 2px solid black;
-            background-color: blue;
+            border-left: 2px solid black;
+            background-color: rgb(110, 110, 114);
+            color: rgb(240, 226, 201);
         }
 
         td {
             padding: 20px;
             text-align: left;
             border-bottom: 2px solid black;
+            border-left: 2px solid black;
         }
 
         .table_data:hover {
-            background-color: yellow;
+            background-color: rgb(243, 243, 224);
         }
 
-        tr:nth-child(even) {
+        tr:nth-child(odd) {
             background-color: #f2f2f2;
         }
 
         table {
-            background-color: rgb(19, 190, 105);
+            /* background-color: rgb(19, 190, 105); */
             width: 100%;
             float: left;
+            border: 2px solid black;
+            border-radius: 10px;
+            /* border-radius: 20px; */
             /* height: 50%;
             overflow-y: auto; */
         }
@@ -51,7 +57,7 @@
         } */
 
         .search_bar {
-            background-color: coral;
+            /* background-color: coral; */
             float: right;
             width: 100%;
             margin-bottom: 2%;
@@ -76,7 +82,7 @@
 
         .no_bk {
             width: 100%;
-            background-color: crimson;
+            /* background-color: crimson; */
             float: left;
             text-align: center;
         }
@@ -98,10 +104,10 @@
         }
 
         #clear_search {
-            background-color: cyan;
+            /* background-color: cyan; */
             width: 90%;
             float: left;
-            padding-left: 10%;
+            padding-left: 2%;
             /* margin: 3%; */
             /* margin-top: 3%; */
             /* float: right; */
@@ -109,60 +115,129 @@
         }
 
         .or_bet {
-            background-color: lightsalmon;
+            /* background-color: lightsalmon; */
             width: 55%;
             float: left;
-            padding-left: 45%;
+            padding-left: 35%;
             margin-top: 10%;
         }
 
         .drop_downs {
-            background-color: darkgoldenrod;
+            background-color: rgb(228, 226, 222);
             float: right;
             width: 98%;
             margin-top: 10%;
-            padding: 1%;
-            float: center;
+            padding: 2%;
+            margin-right: 0px;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            border-radius: 20px;
         }
 
         select {
-            width: 100%;
+            width: 98%;
             margin-top: 2%;
             margin-bottom: 5%;
         }
 
         .filter_but {
-            background-color: rgb(59, 248, 59);
-            margin-left: 33%;
+            /* background-color: rgb(59, 248, 59); */
+            margin-left: 35%;
             /* text-align: center; */
         }
 
         .switch {
             float: left;
-            background-color: lightblue;
+            /* background-color: lightblue; */
             width: 75%;
             padding-left: 25%;
             margin-bottom: 10%;
         }
 
         .list {
-            background-color: rgb(221, 81, 16);
+            /* background-color: rgb(221, 81, 16); */
             float: left;
-            width: 75%;
+            width: 73%;
+            margin-top: 2%;
             /* height: 50%;
             overflow-y: auto; */
         }
 
         .side_bar {
-            background-color: lawngreen;
+            /* background-color: lawngreen; */
+            padding: 1%;
             float: right;
             width: 24%;
             /* text-align: right; */
             /* margin-bottom: 100px; */
             margin-top: 0.95%;
             position: fixed;
-            margin-left: 73%;
+            margin-left: 71%;
         }
+
+        .container-fluid{
+            /* display: flex; */
+            /* background-color: blue; */
+            margin-bottom: 80%;
+        }
+
+        .card{
+            width: 20%;
+            /* display: inline-block; */
+            box-shadow: 1px 1px 20px black;
+            float: left;
+            border-radius: 5px; 
+            width: 20%;
+            height: 350px;
+            margin: 2%;
+            text-align: center;
+            transition: all .3s ease-in-out;
+            background-color: rgb(224, 219, 219);
+        }
+
+        #card_name {
+            margin-top: 0px;
+            margin-bottom: 5px;
+            margin-left: 0px;
+            margin-right: 0px;
+            /* background-color: blue;    */
+            vertical-align: center;  
+            color: black;       
+        }
+
+        .image img{
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .card:hover {
+            box-shadow: 10px 10px 20px black; 
+        } 
+
+        .home_body {
+            width: 97%;
+            margin: 1%;
+        }
+
+        .switch_b {
+            background-color: rgb(219, 221, 221);
+            color: black;
+            width: 80%;
+            float: right;
+            padding: 2%;
+            margin-right: 25%;
+            margin-top: 5%;
+            margin-bottom: 2%;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .switch_b:hover {
+            background-color: rgb(205, 209, 209);
+        }
+
     </style>
 {% endblock %}
 
@@ -173,40 +248,70 @@
 {% block body_content %}
     <div class="list">
 
-    <table>
-        <tr class="heads">
-            <th id="book_name">Book Name {{request.user}}</th>
-            <th id="authors">Authors</th>
-            <th id="genre">Genre</th>
-            <th id="publi_date">Published on</th>
-            <th id="avail">Available copies</th>
-        </tr>
+        {% if request.path == "/book_block/" %}
+            <div class="container-fluid">
+                {% for book in ls %}
+                    <div class = "card">
+                        <a href="/book/{{ book.book_id }}">
+                            <div class = "image">
+                                <img src="{{book.cover.url}}"> 
+                            </div>
+                            <h4 id="card_name">{{ book.name }}</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+                <!-- <h1>{{ request.get_full_path }}</h1> -->
+                <!-- <h1>{{ request.path }}</h1> -->
+            </div>
 
-        {% for b in ls %}
-            <tr class="table_data">
-                <td>
-                    <a href="/book/{{ b.book_id }}/">
-                        {{ b.name }}
-                    </a>
-                </td>
-                <td>{{ b.authors }}</td>
-                <td>{{ b.genre }}</td>
-                <td>{{ b.publi_date }}</td>
-                <td>{{ b.available }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+            {% if no_b %}
+                <p class="no_bk"><i>No book matched</i></p>
+            {% endif %}
 
-    {% if no_b %}
-        <p class="no_bk"><i>No book matched</i></p>
-    {% endif %}
+        {% else %}
+            <table>
+                <tr class="heads">
+                    <th id="book_name">Book Name {{request.user}}</th>
+                    <th id="authors">Authors</th>
+                    <th id="genre">Genre</th>
+                    <th id="publi_date">Published on</th>
+                    <th id="avail">Available copies</th>
+                </tr>
+
+                {% for b in ls %}
+                    <tr class="table_data">
+                        <td>
+                            <a href="/book/{{ b.book_id }}/" style="color: black;">
+                                {{ b.name }}
+                            </a>
+                        </td>
+                        <td>{{ b.authors }}</td>
+                        <td>{{ b.genre }}</td>
+                        <td>{{ b.publi_date }}</td>
+                        <td>{{ b.available }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if no_b %}
+            <p class="no_bk"><i>No book matched</i></p>
+        {% endif %}
     
     </div>
 
     <div class="side_bar">
 
         <div class="switch">
-            <a href="">Switch to block view</a>
+            {% if request.path == "/book_block/" %}
+                <a href="/book_list/">
+                    <p class="switch_b">Switch to list view</p>
+                </a>
+            {% else %}
+                <a href="/book_block/">
+                    <p class="switch_b">Switch to block view</p>
+                </a>
+            {% endif %}
         </div>
 
         <div class="search_bar">
@@ -216,14 +321,14 @@
                 <button type="submit" class="search_button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <a href="/book_list/" id="clear_search">Clear search</a>
+        <a href="{{request.path}}" id="clear_search">Clear search</a>
 
-        <i class="or_bet">or</i>
+        <i class="or_bet">---- or ----</i>
 
         <div class="drop_downs">
             <form action="." method="POST">
                 {% csrf_token %}
-                <label for="select_genre">Choose a genre :</label>
+                <label for="select_genre"> Choose a genre :</label>
                 <select name="select_genre" id="genre_selc">
                     <option value="">-- select --</option>
                     {% for g in genre_list %}
@@ -231,7 +336,7 @@
                     {% endfor %}
                 </select>
 
-                <label for="select_author">Choose a author :</label>
+                <label for="select_author"> Choose a author :</label>
                 <select name="select_author" id="auth_selc">
                     <option value="">-- select --</option>
                     {% for a in author_list %}

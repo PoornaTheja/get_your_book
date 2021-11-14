@@ -1,27 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Home</title>
-        <style>
-            .main_name {
-                background-color: rgb(120, 128, 15);
-                width: 40%;
-                text-align: left;
-            }
+{% extends "base.html" %}
+{% load static %}
 
-            .main_head {
-                font-size: 60px;
-                font-family: 'Courier New', Courier, monospace;
-            }
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <style>
+        .main_name {
+            /* background-color: rgb(120, 128, 15); */
+            width: 40%;
+            text-align: left;
+            margin-top: 15%;
+            float: right;
+        }
 
-        </style>
-    </head>
+        .main_head {
+            font-size: 60px;
+            /* font-family: 'Brush Script MT', cursive; */
+            color: bisque;
+            margin-top: 0px;
+            /* top: 0px; */
+            margin-bottom: 0px;
+            /* bottom: 0px; */
 
-    <body>
-        <div class="main_name">
-            <h1 class="main_head">WELCOME TO,</h1>
-            <h1 class="main_head">GET YOUR BOOK</h1>
-        </div>
-    </body>
+            /* background-color: tomato; */
+        }
 
-</html>
+        body {
+            background-image: url("{% static 'images/home.jpg' %}");
+        }
+
+        .home_top {
+            background-color: transparent;
+            height: 100px;
+            top: 10px;
+        }
+    </style>
+{% endblock %} 
+
+
+{% block body_content %}
+    <div class="main_name">
+        <p class="main_head">Welcome to</p>
+        <p class="main_head">Get Your Book</p>
+    </div>
+    
+{% endblock %}

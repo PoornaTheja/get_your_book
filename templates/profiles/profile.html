@@ -88,7 +88,7 @@
     }
 
     .using_bks {
-        background-color: rgb(223, 221, 218);
+        background-color: #dde0e0;
         padding-bottom: 2%;
         border-radius: 20px;
     }
@@ -100,7 +100,8 @@
     }
 
     .side_bar {
-        background-color: blueviolet;
+        /* background-color: rgb(220, 218, 223); */
+        border-radius: 20px;
         width: 30%;
         float: right;
         margin-left: 66%;
@@ -115,16 +116,24 @@
     }
 
     .prof_name {
-        background-color: burlywood;
+        background-color: rgb(102, 100, 98);
+        width: 50%;
         text-align: center;
         margin-top: 1%;
         margin-bottom: 0px;
+        margin-left: 25%;
+        border-radius: 20px;
+        padding: 1%;
     }
 
     .prof_email {
         background-color: burlywood;
+        width: 50%;
+        margin-left: 25%;
         margin-top: 1%;
         text-align: center;
+        padding: 1%;
+        border-radius: 20px;
     }
 
 </style>
@@ -197,7 +206,9 @@
         <div class="prof_info">
             <img src="{{ u.pic.url }}" alt="Profile pic" width="60%" class="prof_img">
             <p class="prof_name">{{ u.username }}</p>
-            <p class="prof_email">{{ u.email }}</p>
+            {% if u.email %}
+                <p class="prof_email">{{ u.email }}</p>
+            {% endif %}
         </div>
 
         <!-- <div id="pi_chart">
