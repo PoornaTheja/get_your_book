@@ -9,7 +9,7 @@ class user(models.Model):
     gender = models.CharField(max_length=1, blank=True, null=True)
     no_of_current_books = models.IntegerField(blank=True, null=True)
     n_read = models.IntegerField(blank=True, null=True, default=0)
-    pic = models.ImageField(upload_to ='profiles/', default = "books/noImg.jpg")
+    pic = models.ImageField(upload_to ='profiles/', default = "profiles/default_profile.jpg")
 
     class Meta:
         managed = False

@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from .models import book
 from comments.models import comment
-from .forms import search_form
+from .forms import search_form, review_form
 from collections import deque
 from profiles.models import user
 from orders.models import order
+from datetime import datetime
+from pytz import timezone
+
+# print("****************")
+# print(datetime.now())
 
 # Create your views here.
 def book_list_view(request):
@@ -92,19 +97,38 @@ def book_view(request, pk):
     # print(u_id, b_id)
 
     stat = ''
+    ord_id = 0
 
-    
-
-    if request.method == "POST":
-        o = order.objects.create(book = bk, user = u)
+    form = review_form(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        u = user.objects.filter(username = request.user.username).first()
+        obj.user = u
+        obj.book = bk
+        obj.save()
+        form = review_form()
+    elif request.method == "POST":
+        o = order.objects.create(book = bk, user = u, taken = datetime.now(timezone('Asia/Kolkata')))
+        ord_id = o.order_id
         stat = o.r_status
+        
+    # if request.method == "POST":
+    #     o = order.objects.create(book = bk, user = u)
+    #     stat = o.r_status
 
     qs = order.objects.all().filter(book = bk).filter(user = u).exclude(r_status = "returned")
     if len(qs):
         qs = qs.first()
         stat = qs.r_status
+        ord_id = qs.order_id
+
+        cur = datetime.now(timezone('Asia/Kolkata'))
+        if (cur-(qs.taken)).days > 10:
+            stat = ""
+            ord_id = 0
+            qs.delete()
 
 
     return render(request, "books/book.html", 
-    {"book":bk, "img_path":img_path, "cs":cs, "stat":stat, "pk":pk})
+    {"book":bk, "img_path":img_path, "ord_id":ord_id, "cs":cs, "stat":stat, "pk":pk, "count":len(cs), "form":form})
 

@@ -47,12 +47,12 @@
         }
 
         .side_b {
-            background-color: blue;
+            /* background-color: blue; */
             width: 20%;
             float: right;
-            margin-right: 1%;
+            margin-right: 0px;
             text-align: center;
-            margin-top: 7%;
+            margin-top: 10%;
         }
 
         .top_ten {
@@ -116,7 +116,7 @@
 {% block body_content %}
 
     <div class="top_ten">
-        <h1>Top 10 most read books</h1>
+        <h1>Popular books</h1>
 
         <div class="container-fluid">
             {% for book in ls %}

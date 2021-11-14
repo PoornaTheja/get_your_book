@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/book.css' %}">
+    <link rel="stylesheet" href="{% static 'book.css' %}">
     <!-- <style>
         .book_info {
             width: 70%;
@@ -81,6 +81,9 @@
                 <h3 class="avail_num">{{book.available}} available</h3>
             {% else %}
                 <p id="status">{{stat}}</p>
+                {% if ord_id != 0 %}
+                    <p id="order_id">Your Order Id is {{ ord_id }}</p>
+                {% endif %}
             {% endif %}
 
         {% else %}
@@ -153,17 +156,26 @@
     <div id="comments">
         <h2 style="text-align: center;">Reviews</h2>
         {% if count == 0 %}
-        <h3 style="text-align: center;">No Reviews Yet</h3>
+            <p style="text-align: center;">--- No Reviews Yet ---</p>
         {% else %}
-        <div class="row">
-            {% for cmt in cs %}
-            <div class="card">
-                <b>{{cmt.user.username}}</b>
-                <p>{{cmt.comment}}</p>
+            <div class="row">
+                {% for cmt in cs %}
+                <div class="card">
+                    <b>{{cmt.user.username}}</b>
+                    <p>{{cmt.comment}}</p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endif %}
+
+        <div class="add_comment">
+            <form method = "post" action="#comments/">
+                {% csrf_token %}
+                {{form.as_p }}
+                <input type="submit" value="Post">
+            </form>
+        </div>
+
     </div>
 
 {% endblock %}
