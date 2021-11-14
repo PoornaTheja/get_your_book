@@ -8,7 +8,10 @@ from django.db.models.signals import post_save
 
 # Create your views here.
 def order_view(request):
-    qs = order.objects.all()
+
+    us = user.objects.all().filter(username = request.user).first()
+
+    qs = order.objects.all().filter(user = us)
     qs1 = qs.filter(r_status = "Placed")    
     qs2 = qs.filter(r_status = "Using")    
     qs3 = qs.filter(r_status = "Returned")
@@ -22,7 +25,6 @@ def order_view(request):
     temp = 50
 
     # print(qs1, qs2, qs3)
-    us = user.objects.all().filter(username = request.user).first()
     # print("^^^^^^^^^^^^^^^^^^")
     # print(type(us))
 

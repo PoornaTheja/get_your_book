@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from books.views import book_list_view, book_view, book_block_veiw
+from books.views import book_list_view, book_view, book_main_view
 from profiles.views import order_view
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -32,9 +32,10 @@ urlpatterns = [
     path("book/<int:pk>/", book_view), 
     path("book_list/", book_list_view),
     path("book_block/", book_list_view, name = "cards"),
+    path("book_main/", book_main_view, name="books"),
+
 
     path("home/", TemplateView.as_view(template_name = "main.html"), name="home"),
-    path("book_main/", TemplateView.as_view(template_name = "books/book_main.html"), name="books")
     
 ]
 

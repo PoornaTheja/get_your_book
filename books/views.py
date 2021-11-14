@@ -66,10 +66,10 @@ def book_list_view(request):
     return render(request, "books/book_list.html", 
     {"ls":ls, "no_b":no_b, "genre_list":genre_list, "author_list":authors_list})
 
-def book_block_veiw(request, *args, **kwrgs):
-    books= book.objects.all().order_by('-n_read')
-    context={'books': books}
-    return render(request, 'books/book_cards.html', context)
+def book_main_view(request, *args, **kwrgs):
+    books= book.objects.all().order_by('-n_read')[:10]
+    context={'ls': books}
+    return render(request, 'books/book_main.html', context)
 
 def book_view(request, pk):
 
