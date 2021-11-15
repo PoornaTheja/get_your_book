@@ -355,7 +355,7 @@ label {
     border: 3px solid #464646;
     border-radius: 10px;
     resize: vertical;
-  
+    height: 100px;
 }
 
 .add_comment input[type=submit] {

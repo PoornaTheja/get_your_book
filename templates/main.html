@@ -6,10 +6,10 @@
     <style>
         .main_name {
             /* background-color: rgb(120, 128, 15); */
-            width: 40%;
-            text-align: left;
+            width: 30%;
+            text-align: right;
             margin-top: 15%;
-            float: right;
+            float: left;
         }
 
         .main_head {
@@ -35,6 +35,22 @@
             height: 100px;
             top: 10px;
         }
+
+        #search_m {
+            margin: 2%;
+            background-color: rgb(230, 186, 134);
+            font-size: 120%;
+            padding: 2%;
+            padding-left: 5%;
+            text-align: center;
+            padding-right: 5%;
+            width: 50%;
+            border-radius: 5px;
+            margin-top: 5%;
+            margin-left: 30%;
+            color: black;
+        }
+
     </style>
 {% endblock %} 
 
@@ -43,6 +59,9 @@
     <div class="main_name">
         <p class="main_head">Welcome to</p>
         <p class="main_head">Get Your Book</p>
+        <a href="/book_main/">
+            <p id="search_m">Search for our book</p>
+        </a>
     </div>
     
 {% endblock %}
